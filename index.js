@@ -29,7 +29,7 @@ say('Senna FG98', {
   align: 'center',
   gradient: ['red', 'magenta']
 })
-say(`senna-bot By FG98 Ig: @fg98_ff`, {
+say(`Spider-Bot-MD`, {
   font: 'console',
   align: 'center',
   gradient: ['cyan', 'magenta']
