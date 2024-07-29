@@ -3,12 +3,12 @@ import chalk from 'chalk'
 import { fileURLToPath } from 'url' 
 
 global.owner = [
-  ['59172945992', 'FG98', true],
-  ['5491168352204']
+  ['593979133620', '👑Creador👑', true],
+  ['595972157130']
 ] //Numeros de owner 
 
-global.mods = [''] 
-global.prems = ['50489079501', '573143917092']
+global.mods = ['593979133620'] 
+global.prems = ['', '593979133620']
 global.APIs = { // API Prefix
   // name: 'https://website' 
   nrtm: 'https://fg-nrtm.ddns.net',
@@ -20,23 +20,23 @@ global.APIKeys = { // APIKey Here
 }
 
 // Sticker WM
-global.packname = 'Senna┃ᴮᴼᵀ' 
-global.author = '@fg98' 
+global.packname = 'Spider-Bot-MD' 
+global.author = 'Ricardo' 
 
 //--info FG
-global.botName = 'Senna'
-global.fgig = 'https://instagram.com/fg98_ff' 
-global.fgsc = 'https://github.com/FG98F/dylux-fg' 
-global.fgyt = 'https://youtube.com/fg98f'
-global.fgpyp = 'https://paypal.me/fg98f'
+global.botName = 'Spider-Bot-MD'
+global.fgig = '' 
+global.fgsc = '' 
+global.fgyt = ''
+global.fgpyp = ''
 global.fglog = 'https://i.ibb.co/1zdz2j3/logo.jpgs' 
 
 //--- Grupos WA
-global.id_canal = '120363177092661333@newsletter' //-ID de canal de WhatsApp
-global.fgcanal = 'https://whatsapp.com/channel/0029VaCeuZd6mYPQiWqxXj1F'
-global.bgp = 'https://chat.whatsapp.com/BESBo5xjvIZE4YVvth6Yzr'
-global.bgp2 = 'https://chat.whatsapp.com/I7bvd8XCAOUHjgkHteqFC7'
-global.bgp3 = 'https://chat.whatsapp.com/F0JTTyZ3hsoL7OlU8TEpuH' //--GP NSFW
+global.id_canal = '' //-ID de canal de WhatsApp
+global.fgcanal = ''
+global.bgp = ''
+global.bgp2 = ''
+global.bgp3 = ''
 
 global.wait = '⌛ _Cargando..._\n*▬▬▬▭*'
 global.rwait = '⌛'
