@@ -29,7 +29,7 @@ global.fgig = ''
 global.fgsc = '' 
 global.fgyt = ''
 global.fgpyp = ''
-global.fglog = 'https://i.ibb.co/1zdz2j3/logo.jpgs' 
+global.fglog = 'https://telegra.ph/file/29d5f57fa33caf1b6a1f6.jpg' 
 
 //--- Grupos WA
 global.id_canal = '' //-ID de canal de WhatsApp
