@@ -30,7 +30,7 @@ let tags = {
 const defaultMenu = {
   before: `*¡Hola!* %name
 
-*〔🕷️SPIDER MAN BOT 🕸️〕
+〔🕷️SPIDER MAN BOT 🕸️〕
 
 ╭━〔SPIDER MAN 〕━⬣
 ┃ACTIVO: 03.06.2024
@@ -430,7 +430,7 @@ const defaultMenu = {
 ┃💎➺ .añadirdiamantes @tag cantidad
 ┃💎➺ .añadirxp @tag cantidad
 ┃💎➺ .añadircoins @tag cantidad
-╰━━━━━━━━━━⬣*`.trimStart(),
+╰━━━━━━━━━━⬣`.trimStart(),
   header: '',
   body: '',
   footer: '',
