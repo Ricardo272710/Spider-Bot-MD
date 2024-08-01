@@ -422,5 +422,5 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
 };
 handler.help = ['menu'];
 handler.tags = ['menu'];
-handler.command = /^(menuowner|solowner)$/i;
+handler.command = /^(menu|allmenu)$/i;
 export default handler;
