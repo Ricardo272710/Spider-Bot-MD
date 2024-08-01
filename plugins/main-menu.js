@@ -1,61 +1,58 @@
-//import db from '../lib/database.js'
 import { promises } from 'fs'
 import { join } from 'path'
 import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
-//import { plugins } from '../lib/plugins.js'
+
 let tags = {
-  /*'main': '𝙸𝙽𝙵𝙾𝚁𝙼𝙰𝙲𝙸𝙾́𝙽 💻',
-  'group': '𝙶𝚁𝚄𝙿𝙾𝚂',
-  'game': '𝙹𝚄𝙴𝙶𝙾𝚂',
-  'dl': '𝙳𝙴𝚂𝙲𝙰𝚁𝙶𝙰𝚂',
-  'jadibot': '𝙹𝙰𝙳𝙸𝙱𝙾𝚃', 
-  'nable': '𝙴𝙽𝙰𝙱𝙻𝙴 / 𝙳𝙸𝚂𝙰𝙱𝙻𝙴', 
-  'internet': '𝙱𝚄𝚂𝙲𝙰𝙳𝙾𝚁𝙴𝚂',
-  'convertido': '𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝙸𝙳𝙾𝚁𝙴𝚂', 
-  'sticker': '𝚂𝚃𝙸𝙲𝙺𝙴𝚁𝚂',
-  'rg': '𝚁𝙿𝙶',
-  'audio': '𝙰𝚄𝙳𝙸𝙾𝚂-𝙴𝙵𝙴𝙲𝚃𝙾𝚂', 
-  'tools': '𝙷𝙴𝚁𝚁𝙰𝙼𝙸𝙴𝙽𝚃𝙰𝚂', 
-  'anime': '𝙰𝙽𝙸𝙼𝙴', 
-  'nsfw': '𝙽𝚂𝙵𝚆 +18', 
-  'owner': '𝙾𝚆𝙽𝙴𝚁',*/
+  'main': 'INFO',
+  'game': 'JUEGOS',
+ // 'serbot': 'SUB BOTS',
+  'rpg': 'ECONOMÍA',
+  'rg': 'REGISTRO',
+  'downloader': 'DESCARGAS',
+//  'marker': 'LOGO - MAKER',
+  'nable': 'ACTIVADORES',
+  'group': 'GRUPOS',
+  'search': 'BUSCADOR',
+  'img': 'IMÁGENES',
+  'tools': 'HERRAMIENTAS',
+  'fun': 'DIVERCIÓN',
+  'audio': 'EFECTO DE AUDIOS', 
+  'sticker': 'STICKERS',
+  'nsfw': 'NSFW',
+  'owner': 'CREADOR',
+  'advanced': 'AVANZADO',
 }
+
 const defaultMenu = {
-  before: `*╭═━═━═━─ [ ＵＳＵＡＲＩＯＳ ] ─━═━═━═╮*
-*〣*╭──────────────
-*〣*├⫹⫺ *Nombre :* %name
-*〣*├⫹⫺ *Limite :* %diamond
-*〣*├⫹⫺ *Nivel :* %level
-*〣*├⫹⫺ *Rango :* %role
-*〣*├⫹⫺ *Exp :* %exp
-*〣*╰──────────────
-꒷︶꒷꒥꒷‧₊˚૮꒰˵•ᵜ•˵꒱ა‧₊˚꒷₊˚૮꒰˵•ᵜ•˵꒱ა‧₊˚꒷︶꒷꒥꒷
+  before: `
+*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-*╭═━═━═━─ [ ＩＮＦＯＢＯＴ ] ─━═━═━═╮*
-*〣*╭──────────────
-*〣*├⫹⫺ *Creador :* IVAN
-*〣*├⫹⫺ *Numero:* wa.me/595972157130
-*〣*├⫹⫺ *Tiempo Activo:* %uptime
-*〣*├⫹⫺ *Registrado :* %rtotalreg de %totalreg usuarios
-*〣*╰──────────────
-꒷︶꒷꒥꒷‧₊˚૮꒰˵•ᵜ•˵꒱ა‧₊˚꒷₊˚૮꒰˵•ᵜ•˵꒱ა‧₊˚꒷︶꒷꒥꒷
+Hola *%taguser*, soy *Ai Hoshino*, en que puedo ayudarte hoy?
 
-*╭═━═━═━─「 ＨＯＹ 」─━═━═━═╮*
-*〣* *Fecha :* %date
-꒷︶꒷꒥꒷‧₊˚૮꒰˵•ᵜ•˵꒱ა‧₊˚꒷₊˚૮꒰˵•ᵜ•˵꒱
+╭────═[ *I N F O  -  U S E R* ]═─────⋆
+│╭───────────────···
+┴│✯ *🍭 Nombre* : %name
+✩│✯ *⭐ Estrellas* : %star
+✩│✯ *📈 Nivel* : %level
+┬│✯ *💫 XP* : %totalexp
+│╰────────────────···
+╰───────────═┅═──────────
+%readmore
+*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
+\t\t\t*L I S T A  -  M E N Ú S*
 `.trimStart(),
-  header: '*╭═━═━═━─「 %category 」─━═━═━═╮*',
-  body: '*〣* ├⫹⫺  %cmd',
-  footer: '꒷︶꒷꒥꒷‧₊˚૮꒰˵•ᵜ•˵꒱ა‧₊˚꒷₊˚૮꒰˵•ᵜ•˵꒱ა‧',
-  after: `
-`,
+  header: '╭───═[ *MENÚ メ %category* ]═────⋆\n│╭───────────────···',
+  body: '✩│ *%cmd*\n',
+  footer: '│╰────────────────···\n╰───────────═┅═──────────\n',
+  after: '\n*Simple WhatsApp Bot Multi Device*',
 }
+
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
-  try {
+ try {
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
-    let { exp, diamond, level, role } = global.db.data.users[m.sender]
+    let { exp, star, level } = global.db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
     let name = await conn.getName(m.sender)
     let d = new Date(new Date + 3600000)
@@ -99,7 +96,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
         help: Array.isArray(plugin.tags) ? plugin.help : [plugin.help],
         tags: Array.isArray(plugin.tags) ? plugin.tags : [plugin.tags],
         prefix: 'customPrefix' in plugin,
-        diamond: plugin.diamond,
+        star: plugin.star,
         premium: plugin.premium,
         enabled: !plugin.disabled,
       }
@@ -113,7 +110,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     let header = conn.menu.header || defaultMenu.header
     let body = conn.menu.body || defaultMenu.body
     let footer = conn.menu.footer || defaultMenu.footer
-    let after = conn.menu.after || (conn.user.jid == conn.user.jid ? '' : `Powered by https://wa.me/${conn.user.jid.split`@`[0]}`) + defaultMenu.after
+    let after = conn.menu.after || (conn.user.jid == global.conn.user.jid ? '' : ``) + defaultMenu.after
     let _text = [
       before,
       ...Object.keys(tags).map(tag => {
@@ -121,8 +118,8 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
           ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
             return menu.help.map(help => {
               return body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
-                .replace(/%isdiamond/g, menu.diamond ? '(ⓓ)' : '')
-                .replace(/%isPremium/g, menu.premium ? '(Ⓟ)' : '')
+                .replace(/%isstar/g, menu.star ? '˄' : '')
+                .replace(/%isPremium/g, menu.premium ? '˄' : '')
                 .trim()
             }).join('\n')
           }),
@@ -135,53 +132,62 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     let replace = {
       '%': '%',
       p: _p, uptime, muptime,
+      taguser: '@' + m.sender.split("@s.whatsapp.net")[0],
+      wasp: '@0',
       me: conn.getName(conn.user.jid),
       npmname: _package.name,
-      npmdesc: _package.description,
       version: _package.version,
+      npmdesc: _package.description,
+      npmmain: _package.main,
+      author: _package.author.name,
+      license: _package.license,
       exp: exp - min,
       maxexp: xp,
       totalexp: exp,
       xp4levelup: max - exp,
       github: _package.homepage ? _package.homepage.url || _package.homepage : '[unknown github url]',
-      level, diamond, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
+      level, star, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     
-    let pp = './storage/logos/Menu2.jpg'
-    // await conn.reply(m.chat, '*Enviando el menu . . .*', ftrol) 
-    conn.sendFile(m.chat, pp, 'menu.jpg', text.trim(), m, null, nnn)
-    /*conn.sendButton(m.chat, text.trim(), '▢ DyLux  ┃ ᴮᴼᵀ\n▢ Sígueme en Instagram\nhttps://www.instagram.com/fg98_ff', pp, [
-      ['ꨄ︎ Apoyar', `${_p}donate`],
-      ['⏍ Info', `${_p}botinfo`],
-      ['⌬ Grupos', `${_p}gpdylux`]
-    ],m, rpl)*/
-  
-    m.react('🚀') 
+    let pp = 'https://telegra.ph/file/4c3e4b782c82511b3874d.mp4'
+    let pp2 = 'https://telegra.ph/file/d8c5e18ab0cfc10511f63.mp4'
+    let pp3 = 'https://telegra.ph/file/96e471a87971e2fb4955f.mp4'
+    let pp4 = 'https://telegra.ph/file/09b920486c3c291f5a9e6.mp4'
+    let pp5 = 'https://telegra.ph/file/4948429d0ab0212e9000f.mp4'
+    let pp6 = 'https://telegra.ph/file/cab0bf344ba83d79c1a47.mp4'
+    let pp7 = 'https://telegra.ph/file/6d89bd150ad55db50e332.mp4'
+    let pp8 = 'https://telegra.ph/file/e2f791011e8d183bd6b50.mp4'
+    let pp9 = 'https://telegra.ph/file/546a6a2101423efcce4bd.mp4'
+    let pp10 = 'https://telegra.ph/file/930b9fddde1034360fd86.mp4'
+    let pp11 = 'https://telegra.ph/file/81da492e08bfdb4fda695.mp4'
+    let pp12 = 'https://telegra.ph/file/ec8393df422d40f923e00.mp4'
+    let pp13 = 'https://telegra.ph/file/ba7c4a3eb7bf3d892b0c8.mp4'
+    let pp14 = 'https://tinyurl.com/ymlqb6ml'
+    let pp15 = 'https://tinyurl.com/ykv7g4zy'
+    m.react('⭐')
+    conn.sendMessage(m.chat, { video: { url: [pp, pp2, pp3, pp4, pp5, pp6, pp7, pp8, pp9, pp10, pp11, pp12, pp13, pp14, pp15].getRandom() }, gifPlayback: true, caption: text.trim(), mentions: [m.sender] }, { quoted: estilo })
     
   } catch (e) {
-    conn.reply(m.chat, '⚠️ Lo sentimos, el menú tiene un error', m)
+    conn.reply(m.chat, '❎ Lo sentimos, el menú tiene un error.', m)
     throw e
   }
 }
-handler.help = ['help']
+
+handler.help = ['menu']
 handler.tags = ['main']
-handler.command = ['help',
-'menucompleto', 'allmenu'] 
-handler.register = true
-
-handler.exp = 3
-
+handler.command = ['menu', 'help', 'menú'] 
+handler.register = true 
 export default handler
+
 
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
 
 function clockString(ms) {
-  let d = isNaN(ms) ? '--' : Math.floor(ms / 86400000)
-  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000) % 24
+  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
   let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
   let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
-  return [d, 'd ', h, 'h ', m, 'm '].map(v => v.toString().padStart(2, 0)).join('')
+  return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
 }
